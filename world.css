@@ -1,1 +1,42 @@
 /* Add your own styles */
+html{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 25px;
+}
+header {
+    align-items: center;
+    align-content: center; 
+}
+header h1{
+    background-color: rgb(57, 147, 231);
+    color: white;
+    align-items: center;
+    padding: 20px;
+    
+}
+.Area #country{
+    display: inline-flex;
+    padding: 15px;
+    grid-row: 1;
+    margin-bottom: 20px;
+}
+.Area #lookup{
+    padding: 10px;
+    background-color: rgb(236, 133, 102);
+    color: white;
+    font-weight: bolder;
+    font-size: 15px;
+    margin-right: 20px;
+    margin-left: 40px;
+    
+}
+.Area #lookup_cities{
+    padding: 10px;
+    background-color: rgb(236, 133, 102);
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    grid-row: 2;
+    grid-column: 2;
+    margin-left: 10px;
+}
