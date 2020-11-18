@@ -31,7 +31,7 @@ if (isset($_GET['country']) || !empty($_GET['country'])){
     echo "<tr>";
     echo "<td>".$row['name'] ."</td>";
     echo "<td>".$row['continent'] ."</td>";
-    echo "<td>".$row['Independence Year'] ."</td>";
+    echo "<td>".$row['independence_year'] ."</td>";
     echo "<td>".$row['head_of_state'] . "</td>";
     echo "<tr>";
   endforeach;
