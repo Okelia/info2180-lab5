@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", ()=>{
-    var btn = document.getElementById("lookup").onclick= function(e){
+   var btn = document.getElementById("lookup").onclick= function(e){
         var coun = document.getElementById("country").value;
         var printResult = document.getElementById("result");
         var httprequest = new XMLHttpRequest();
@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
         httprequest.open("GET", url, true);
         httprequest.send("");
     }
-    /*var btn_cities = document.getElementById("lookup_cities").onclick= function(e){
-        var coun = document.getElementById("country").value;
-        var printResult = document.getElementById("result");
+
+    var btn_cities = document.getElementById("lookup_cities").onclick= function(e){
+        var city = document.getElementById("cities");
         var httprequest = new XMLHttpRequest();
-        var url = "world.php?country=" + coun ;
+        var url = "world.php?country&context=cities" + city ;
         httprequest.onreadystatechange = function(){
             if (this.status ==200){
                 document.getElementById("result").innerHTML =  this.response;
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         };
         httprequest.open("GET", url, true);
         httprequest.send("");
-    }*/
+    }
     
     /*function searchCountry(){ 
         

@@ -4,7 +4,11 @@ $username = 'lab5_user';
 $password = 'password123';
 $dbname = 'world';
 $country =  $_GET['country'];
-//$cities =  $_GET['cities'];
+
+$conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+
+$country = filter_input(INPUT_GET, "country", FILTER_SANITIZE_STRING);
+$context = filter_input(INPUT_GET, "context", FILTER_SANITIZE_STRING);
 
 if (isset($_GET['country']) || !empty($_GET['country'])){
   $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
@@ -20,33 +24,34 @@ if (isset($_GET['country']) || !empty($_GET['country'])){
   </tr>";
   foreach ($results as $row):
     echo "<tr>";
-    echo "<td>".$row['name'] ."</td>";
-    echo "<td>".$row['continent'] ."</td>";
-    echo "<td>".$row['independence_year'] ."</td>";
-    echo "<td>".$row['head_of_state'] . "</td>";
+    echo "<td>".$row['name']."</td>";
+    echo "<td>".$row['continent']."</td>";
+    echo "<td>".$row['independence_year']."</td>";
+    echo "<td>".$row['head_of_state']. "</td>";
     echo "<tr>";
   endforeach;
   echo "</table>";
 }
-/*if (isset($_GET['cities']) || !empty($_GET['cities'])){
+if (isset($_GET['context'])){
   $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-  $stmt = $conn->query("SELECT * FROM cities");
-  $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $stmt = $conn->query("SELECT * FROM cities JOIN countries ON countries.name = cities.name");
+  //$stmt = $conn->query("SELECT cities.name, cities.district, cities.population FROM cities join countries on cities.country_code=countries.code WHERE countries.name='$country'");
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
   echo "<table border ='1'>
   <tr>
   <th> Name </th>
   <th> District </th>
   <th> Population </th>
   </tr>";
-  foreach ($results as $row):
+  foreach ($result as $row):
     echo "<tr>";
     echo "<td>".$row['name'] ."</td>";
     echo "<td>".$row['district'] ."</td>";
-    echo "<td>".$row['Population'] ."</td>";
+    echo "<td>".$row['population'] ."</td>";
     echo "<tr>";
   endforeach;
   echo "</table>";
-}*/
+}
 
 /*?>
 <ul>
