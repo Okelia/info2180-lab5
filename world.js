@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     var btn_cities = document.getElementById("lookup_cities").onclick= function(e){
         var city = document.getElementById("cities");
         var httprequest = new XMLHttpRequest();
-        var url = "world.php?country&context=cities" + city ;
+        var url = "world.php"+"?country=" + city + "&context=cities";
         httprequest.onreadystatechange = function(){
             if (this.status ==200){
                 document.getElementById("result").innerHTML =  this.response;
@@ -27,16 +27,4 @@ document.addEventListener("DOMContentLoaded", ()=>{
         httprequest.open("GET", url, true);
         httprequest.send("");
     }
-    
-    /*function searchCountry(){ 
-        
-        httprequest.onreadystatechange = function(){
-            if (this.status ==200){
-                this.response = document.getElementById("result").innerHTML;
-                alert(this.response);
-            }
-        };
-        httprequest.open("GET", url, true);
-        httprequest.send("");
-    }*/
 })
