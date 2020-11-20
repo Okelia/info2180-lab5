@@ -11,7 +11,8 @@ $country =  $_GET['country'];
 $country = filter_input(INPUT_GET, "country", FILTER_SANITIZE_STRING);
 $context = filter_input(INPUT_GET, "context", FILTER_SANITIZE_STRING);
 
-if (isset($_GET['country']) ){
+//if (isset($_GET['country']) || !empty($_GET['country']) ){
+if (!isset($_GET['context'])  ){
   $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
   $stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%';"); 
   $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -44,11 +45,11 @@ if (isset($_GET['context']) ){
   <th> District </th>
   <th> Population </th>
   </tr>";
-  foreach ($result as $row):
+  foreach ($result as $result):
     echo "<tr>";
-    echo "<td>".$row['name'] ."</td>";
-    echo "<td>".$row['district'] ."</td>";
-    echo "<td>".$row['population'] ."</td>";
+    echo "<td>".$result['name'] ."</td>";
+    echo "<td>".$result['district'] ."</td>";
+    echo "<td>".$result['population'] ."</td>";
     echo "<tr>";
   endforeach;
   echo "</table>";
